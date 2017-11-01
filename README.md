@@ -10,7 +10,7 @@
 
 ## [Get Start](https://isocpp.org/get-started)
 
-1. Download A Envirment(compiler, editor and other tools)
+1. Set up a envirment(compiler, editor and other tools)
 2. Hardwork
 
 ## Reference
