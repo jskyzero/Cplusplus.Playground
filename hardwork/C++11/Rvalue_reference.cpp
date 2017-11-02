@@ -1,3 +1,23 @@
+/*
+
+右值引用
+  右值:右值对应变量的值本身。C++中右值可以被赋值给左值或者绑定到引用。
+作用:
+移动语义: 对象资源的所有权转移的问题.
+  旧:拷贝一个新的/析构旧的
+  现在:移动(右值中的数据可以被安全移走)
+  例子:按值传递/按值返回
+完美转发: 转发右值
+
+可参考:
+1. zhihu.com:相关讨论
+2. IBM:右值引用与转移语义
+https://www.ibm.com/developerworks/cn/aix/library/1307_lisl_c11/index.html
+
+*/
+
+
+
 // the cstdint header is part of the C++11 standard
 // #include <cstdint>   // for uint8_t
 

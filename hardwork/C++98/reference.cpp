@@ -1,3 +1,12 @@
+/*
+Reference in C++ is nothing more than a syntax sugar. Its purpose is nothing
+more than making invocations to overloaded operator upon custom data type a bit
+prettier. And operator overloading is nothing more than another syntax sugar.
+Just a syntax sugar invented for another syntax sugar.
+
+来自网络
+*/
+
 #include <iostream>
 
 int& getIntReference(int** p, int n) {
