@@ -37,19 +37,6 @@ class Solution {
     return countAllExchangeNth(N, v);
   }
 
-  // int countAllExchangeNth(int n, vector<int>& v) {
-  //   if (n == 0) return 1;
-  //   int ans = 0;
-  //   for (int i = 0; i < n; ++i) {
-  //     if (v[i] % n == 0 || n % v[i] == 0) {
-  //       swap(v[i], v[n - 1]);
-  //       ans += countAllExchangeNth(n - 1, v);
-  //       swap(v[i], v[n - 1]);
-  //     }
-  //   }
-  //   return ans;
-  // }
-
   int countAllExchangeNth(int n, vector<int>& v) {
     if (n == 0) return 1;
     int counts = 0;
