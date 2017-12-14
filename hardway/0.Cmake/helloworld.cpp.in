@@ -2,7 +2,7 @@
 
 using namespace std;
 
-#define MESSAGE "HelloWordl!"
+#define MESSAGE "@MESSAGE@"
 
 int main() {
   cout << MESSAGE << endl;

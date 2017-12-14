@@ -1,3 +1,6 @@
+# Executables
+out
+
 # CMake.gitignore
 
 CMakeCache.txt
