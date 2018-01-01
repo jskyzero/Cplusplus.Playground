@@ -32,6 +32,7 @@
     "utility": "cpp",
     "algorithm": "cpp",
     "functional": "cpp",
-    "cassert": "cpp"
+    "cassert": "cpp",
+    "ciso646": "cpp"
   }
 }
