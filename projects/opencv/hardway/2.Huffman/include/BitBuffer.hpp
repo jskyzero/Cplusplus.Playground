@@ -1,7 +1,8 @@
 #ifndef BIT_BUFFER
 #define BIT_BUFFER 1
 
-#include <vector>  // for vector
+#include <climits>  // for UINT_MAX
+#include <vector>   // for vector
 
 #define INT_BIT_SIZE (sizeof(int) * 8)
 
@@ -24,10 +25,11 @@ class BitBuffer {
     //    11111111      2   6
     //  11111111        << (8 - 6)
     //     00111111     >> (2 - 1) + (8 - 6) = (8 - 1 + 2 - 6)
-    return (UINT_MAX << (INT_BIT_SIZE - end)) >> (INT_BIT_SIZE - 1 + begin - end);
+    return (UINT_MAX << (INT_BIT_SIZE - end)) >>
+           (INT_BIT_SIZE - 1 + begin - end);
   }
 
-  void check_last_int_index() {
+  void checkLastIntIndexFull() {
     if (last_int_index == INT_BIT_SIZE) {
       buffer.push_back(0);
       last_int_index = 0;
@@ -53,29 +55,62 @@ class BitBuffer {
   }
 
   BitBuffer& addBit(uint value) {
-    check_last_int_index();
+    checkLastIntIndexFull();
     buffer.back() = (buffer.back() & intMasker(1, last_int_index)) |
                     (value << last_int_index);
     last_int_index += 1;
     return *this;
   }
 
-  BitBuffer& operator+(BitBuffer bit_buffer) {
-    for (auto i = 0; i < bit_buffer.size(); i++) {
+  BitBuffer& operator+(const BitBuffer& bit_buffer) {
+    for (uint i = 0; i < bit_buffer.size(); i++) {
       this->addBit(bit_buffer.at(i));
     }
     return *this;
   }
 
   std::ostream& operator<<(std::ostream& out) const {
-    for (auto i = 0; i < this->size(); i++) {
+    for (uint i = 0; i < this->size(); i++) {
       out << this->at(i);
     }
     return out;
   }
 
-  friend std::ostream& operator<<(std::ostream& out, const BitBuffer& bit_buffer) {
+  friend std::ostream& operator<<(std::ostream& out,
+                                  const BitBuffer& bit_buffer) {
     return bit_buffer << out;
+  }
+
+  void saveToFile(std::ostream& out) {
+    int buffer_index = buffer.size();
+    int int_index = last_int_index;
+    out.write((char*)&buffer_index, sizeof(buffer_index));
+    out.write((char*)&int_index, sizeof(int_index));
+    out.write(reinterpret_cast<const char*>(&buffer[0]),
+              buffer.size() * sizeof(uint));
+  }
+
+  void readFromFile(std::istream& in) {
+    int buffer_index, int_index;
+    in.read((char*)&buffer_index, sizeof(buffer_index));
+    in.read((char*)&int_index, sizeof(int_index));
+    last_int_index = int_index;
+    buffer = std::vector<uint>(buffer_index);
+    in.read(reinterpret_cast<char*>(&buffer[0]), buffer_index * sizeof(uint));
+  }
+};
+
+struct BitBufferCompare {
+  bool operator()(const BitBuffer& lhs, const BitBuffer& rhs) const {
+    if (lhs.size() == rhs.size()) {
+      for (uint i = 0; i < rhs.size(); i++) {
+        if (lhs.at(i) != rhs.at(i))
+          return lhs.at(i) < rhs.at(i);
+      }
+      return false;
+    } else {
+      return lhs.size() < rhs.size();
+    }
   }
 };
 
