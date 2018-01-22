@@ -33,6 +33,7 @@
     "algorithm": "cpp",
     "functional": "cpp",
     "cassert": "cpp",
-    "ciso646": "cpp"
+    "ciso646": "cpp",
+    "climits": "cpp"
   }
 }
