@@ -35,28 +35,3 @@ C++ is standardized by the International Organization for Standardization (ISO),
 + [Get Start](https://isocpp.org/get-started)
 + [cplusplus.com](http://www.cplusplus.com/)
 + [isocpp](https://isocpp.org).
-├── docs
-│   ├── 2-1_DSA_last_class.md
-│   ├── 2-1_sort.md
-│   ├── +Date_Structure_And_Algorithm.md
-│   ├── Fast_leaning.md
-│   ├── History.md
-│   └── Lambda.md
-├── hardwork
-│   ├── C++11
-│   ├── C++17
-│   ├── hardway
-│   ├── helloworld
-│   ├── leetcode
-│   ├── sicily
-│   ├── sicily_datastructure
-│   ├── STL
-│   └── tips
-├── LICENSE
-├── projects
-│   ├── Agenda
-│   ├── CMake
-│   └── OpenCV
-└── README.md
-
-15 directories, 8 files
