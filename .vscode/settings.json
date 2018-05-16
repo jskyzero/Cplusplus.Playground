@@ -36,6 +36,7 @@
     "cassert": "cpp",
     "ciso646": "cpp",
     "climits": "cpp",
-    "vector": "cpp"
+    "vector": "cpp",
+    "xstring": "cpp"
   }
 }
