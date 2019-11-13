@@ -37,6 +37,7 @@
     "ciso646": "cpp",
     "climits": "cpp",
     "vector": "cpp",
-    "xstring": "cpp"
+    "xstring": "cpp",
+    "map": "cpp"
   }
 }
